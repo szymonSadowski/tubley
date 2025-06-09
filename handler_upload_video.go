@@ -219,9 +219,8 @@ func (cfg *apiConfig) handlerUploadVideo(w http.ResponseWriter, r *http.Request)
 	// Assignment: Update VideoURL with S3 bucket and key.
 	// Format: https://<bucket-name>.s3.<region>.amazonaws.com/<key>
 	s3VideoURL := fmt.Sprintf(
-		"https://%s.s3.%s.amazonaws.com/%s",
-		cfg.s3Bucket,
-		cfg.s3Region,
+		"https://%s/%s",
+		cfg.s3CfDistribution,
 		s3FileKey,
 	)
 	video.VideoURL = aws.String(s3VideoURL) // Assuming video.VideoURL is *string
